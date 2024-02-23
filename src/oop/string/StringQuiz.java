@@ -1,7 +1,5 @@
 package oop.string;
 
-import jdk.internal.access.JavaIOFileDescriptorAccess;
-
 import java.util.Scanner;
 
 public class StringQuiz {
