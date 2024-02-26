@@ -1,5 +1,29 @@
 package oop.this_super;
 
+public class Warrior extends Player {
+
+    int rage;
+
+    Warrior(String name) {
+        // 모든 생성자에는 super()가 내장되어 있습니다.
+        // 자식 객체가 생성될 때는 부모의 객체도 생성이 되어야
+        // 부모의 속성과 기능이 실존하게 되고, 물려줄 수 있기 때문입니다.
+        super(name);
+//        this.name = name; -> 부모의 생성자가 대신 초기화해 줌.
+        this.rage = 60;
+    }
+
+    @Override
+    void characterInfo() {
+        super.characterInfo();
+        System.out.println("# 분노: " + rage);
+    }
+}
+
+
+
+
+
 /*
 	# 자식 클래스, 하위 클래스 (Child, Sub class)
 
@@ -10,11 +34,10 @@ package oop.this_super;
 	 키워드 extends를 쓰고, 물려받을 부모 클래스의 이름을 적으시면 됩니다.
 */
 
-public class Warrior extends Player {
 
-    int rage;
 
-    /*
+
+   /*
 	 # 메서드 오버라이딩(재정의)
 	 - 부모가 물려주는 메서드는 모든 자식들에게 다 맞게 설계되기 힘들기 때문에
 	  부족한 점이 있거나, 아예 맞지 않는 경우에는 자식 클래스 쪽에서
@@ -28,24 +51,3 @@ public class Warrior extends Player {
 	 2. 부모가 물려주는 메서드와 리턴 타입이 똑같을 것!
 	 3. 부모가 물려주는 메서드와 매개변수의 선언 방식이 똑같을 것!
 	*/
-
-    @Override
-    void characterInfo() {
-        super.characterInfo();
-        System.out.println("# 분노: " + rage);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
