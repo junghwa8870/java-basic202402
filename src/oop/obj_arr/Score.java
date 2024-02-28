@@ -2,47 +2,33 @@ package oop.obj_arr;
 
 public class Score {
 
-        /*
-     - 이름, 국어, 영어, 수학, 총점, 평균(double)을
-      담을 수 있는 객체를 디자인하세요.
+    /*
+	 - 이름, 국어, 영어, 수학, 총점, 평균(double)을
+	  담을 수 있는 객체를 디자인하세요.
 
-     - 학생의 모든 정보를 한 눈에 확인할 수 있게
-      scoreInfo() 메서드를 선언해 주세요.
-      메서드 내부에는 출력문을 이용해서 모든 정보를 출력해 주세요.
+	 - 학생의 모든 정보를 한 눈에 확인할 수 있게
+	  scoreInfo() 메서드를 선언해 주세요.
+	  메서드 내부에는 출력문을 이용해서 모든 정보를 출력해 주세요.
 
-     - 캡슐화를 구현해서 작성해 주세요. (생성자는 맘대로 하세요.)
-    */
+	 - 캡슐화를 구현해서 작성해 주세요. (생성자는 맘대로 하세요.)
+	*/
 
-    //필드 선언
     private String name;
-    private int koreanScore;
-    private int englishScore;
-    private int mathScore;
-    private int totalScore;
+    private int kor;
+    private int eng;
+    private int math;
+    private int total;
     private double average;
 
-    //생성자
-    public Score(String name, int koreanScore, int englishScore, int mathScore) {
+    public Score() {}
+
+    public Score(String name, int kor, int eng, int math) {
         this.name = name;
-        this.koreanScore = koreanScore;
-        this.englishScore = englishScore;
-        this.mathScore = mathScore;
-        this.totalScore = koreanScore + englishScore + mathScore;
-        this.average = (double) totalScore / 3;
-
+        this.kor = kor;
+        this.eng = eng;
+        this.math = math;
+        this.setTotalAndAvg();
     }
-
-public void scoreInfo() {
-    System.out.println("학생 이름: " + name);
-    System.out.println("국어 점수: " + koreanScore);
-    System.out.println("영어 점수: " + englishScore);
-    System.out.println("수학 점수: " + mathScore);
-    System.out.println("총점: " + totalScore);
-    System.out.println("평균: " + average);
-}
-
-//Getter와 Setter 메서드
-
 
     public String getName() {
         return name;
@@ -52,43 +38,80 @@ public void scoreInfo() {
         this.name = name;
     }
 
-    public int getKoreanScore() {
-        return koreanScore;
+    public int getKor() {
+        return kor;
     }
 
-    public void setKoreanScore(int koreanScore) {
-        this.koreanScore = koreanScore;
+    public void setKor(int kor) {
+        this.kor = kor;
     }
 
-    public int getEnglishScore() {
-        return englishScore;
+    public int getEng() {
+        return eng;
     }
 
-    public void setEnglishScore(int englishScore) {
-        this.englishScore = englishScore;
+    public void setEng(int eng) {
+        this.eng = eng;
     }
 
-    public int getMathScore() {
-        return mathScore;
+    public int getMath() {
+        return math;
     }
 
-    public void setMathScore(int mathScore) {
-        this.mathScore = mathScore;
+    public void setMath(int math) {
+        this.math = math;
     }
 
-    public int getTotalScore() {
-        return totalScore;
+    public int getTotal() {
+        return total;
     }
 
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
+    /*
+    public void setTotal() {
+        // 이미 kor, eng, math가 세팅이 완료되었다고 가정.
+        this.total = this.kor + this.eng + this.math;
     }
+    */
 
     public double getAverage() {
         return average;
     }
 
-    public void setAverage(double average) {
-        this.average = average;
+    /*
+    public void setAverage() {
+        this.average = this.total / 3.0;
     }
+    */
+
+    // 총점과 평균을 한번에 계산해서 세팅하는 메서드
+    public void setTotalAndAvg() {
+        this.total = this.kor + this.eng + this.math;
+        this.average = this.total / 3.0;
+    }
+
+    public void scoreInfo() {
+        System.out.printf("이름: %s  국어: %d점  영어: %d점  수학: %d점\n총점: %d점  평균: %.2f점\n"
+                , name, kor, eng, math, total, average);
+    }
+
+    // 점수 유효성 검증
+    public static boolean isValidateScore(int score) {
+        if(score > 100 || score < 0) {
+            System.out.println("유효하지 않은 점수입니다. (0 ~ 100)");
+            return false;
+        }
+        return true;
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
