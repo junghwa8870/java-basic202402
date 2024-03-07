@@ -1,6 +1,7 @@
 package video.main;
 
 import video.common.AppService;
+import video.movie.service.MovieService;
 import video.user.service.UserService;
 
 public class AppController {
@@ -13,26 +14,22 @@ public class AppController {
             case 1:
                 service = new UserService();
                 break;
-
             case 2:
 
                 break;
-
             case 3:
-
+                service = new MovieService();
                 break;
-
             case 4:
-                System.out.println("#프로그램을 종료합니다.");
+                System.out.println("# 프로그램을 종료합니다.");
                 System.exit(0);
-                break;
             default:
                 System.out.println("# 메뉴를 다시 입력하세요!");
         }
 
         service.start();
-    }
 
+    }
 
 
 
